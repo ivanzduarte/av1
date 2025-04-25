@@ -45,14 +45,13 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas:
 
    ```sql
    CREATE DATABASE taskmanager;
+Configuração da Aplicação
+application.properties
+O arquivo de configuração do Spring Boot é o application.properties. Faça as seguintes modificações para conectar à sua instância do MariaDB:
 
-## Configuração da Aplicação
-
-### application.properties
-
-O arquivo de configuração do Spring Boot é o `application.properties`. Faça as seguintes modificações para conectar à sua instância do MariaDB:
-
-```properties
+properties
+Copiar
+Editar
 spring.application.name=persistenciadadosav1
 spring.datasource.url=jdbc:mariadb://localhost:3306/taskmanager
 spring.datasource.username=root
@@ -62,69 +61,68 @@ spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MariaDBDialect
+Executando o Projeto
+Iniciar MariaDB
+Abra o painel do XAMPP e clique em "Start" para iniciar o MariaDB.
 
-## Executando o Projeto
+Verifique se o banco de dados taskmanager foi criado corretamente e está funcionando.
 
-### Iniciar MariaDB
+Executar Aplicação
+Abra a sua IDE e execute a classe principal do Spring Boot (com a anotação @SpringBootApplication).
 
-1. Abra o painel do XAMPP e clique em "Start" para iniciar o MariaDB.
-2. Verifique se o banco de dados `taskmanager` foi criado corretamente e está funcionando.
+A aplicação será iniciada na porta 8080 por padrão (ou na porta configurada no arquivo application.properties).
 
-### Executar Aplicação
+Testar Endpoints
+Agora, você pode testar os endpoints da API utilizando ferramentas como o Postman. Alguns exemplos de endpoints são:
 
-1. Abra a sua IDE e execute a classe principal do Spring Boot (com a anotação `@SpringBootApplication`).
-2. A aplicação será iniciada na porta 8080 por padrão (ou na porta configurada no arquivo `application.properties`).
+POST /usuarios: Criar um novo usuário.
 
-### Testar Endpoints
+GET /usuarios: Listar todos os usuários.
 
-Agora, você pode testar os endpoints da API utilizando ferramentas como o [Postman](https://www.postman.com/). Alguns exemplos de endpoints são:
+PUT /usuarios/{id}: Atualizar um usuário existente.
 
-- `POST /usuarios`: Criar um novo usuário.
-- `GET /usuarios`: Listar todos os usuários.
-- `PUT /usuarios/{id}`: Atualizar um usuário existente.
-- `DELETE /usuarios/{id}`: Deletar um usuário.
+DELETE /usuarios/{id}: Deletar um usuário.
 
-## Testes e Validação
-
-### Testes com Postman
-
+Testes e Validação
+Testes com Postman
 Utilize o Postman para fazer requisições para os endpoints da API, por exemplo:
 
-1. **Criar Usuário:**
+Criar Usuário:
 
-   Método: `POST`
-   URL: `http://localhost:8080/usuarios`
-   Corpo: JSON com os dados do usuário.
+Método: POST URL: http://localhost:8080/usuarios Corpo: JSON com os dados do usuário.
 
-2. **Listar Usuários:**
+Listar Usuários:
 
-   Método: `GET`
-   URL: `http://localhost:8080/usuarios`
+Método: GET URL: http://localhost:8080/usuarios
 
-3. **Atualizar Usuário:**
+Atualizar Usuário:
 
-   Método: `PUT`
-   URL: `http://localhost:8080/usuarios/{id}`
-   Corpo: JSON com os dados atualizados.
+Método: PUT URL: http://localhost:8080/usuarios/{id} Corpo: JSON com os dados atualizados.
 
-4. **Deletar Usuário:**
+Deletar Usuário:
 
-   Método: `DELETE`
-   URL: `http://localhost:8080/usuarios/{id}`
+Método: DELETE URL: http://localhost:8080/usuarios/{id}
 
-### Verificação no Banco de Dados
-
+Verificação no Banco de Dados
 Você pode usar o phpMyAdmin ou comandos SQL para verificar se as alterações realizadas na aplicação foram aplicadas corretamente ao banco de dados:
 
-- Listar tabelas:
+Listar tabelas:
 
-  ```sql
-  SHOW TABLES;
+sql
+Copiar
+Editar
+SHOW TABLES;
+Verificar dados na tabela de usuários:
 
-- Verificar dados na tabela de usuários:
+sql
+Copiar
+Editar
+SELECT * FROM usuarios;
+Verificar dados na tabela de tarefas:
 
-  ```sql
-  SELECT * FROM usuarios;
-
+sql
+Copiar
+Editar
 SELECT * FROM tarefas;
-
+Conclusão
+Este projeto demonstra como integrar Spring Boot com MariaDB para gerenciar um sistema de tarefas com operações CRUD. Através da configuração adequada do banco de dados e da aplicação, é possível realizar as operações de criação, leitura, atualização e exclusão de usuários e tarefas. A validação dos dados pode ser feita via Postman e verificação direta no banco de dados utilizando SQL.
