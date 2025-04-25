@@ -1,129 +1,50 @@
-📋 Task Manager - Aplicação Spring Boot com MariaDB
-Este projeto é uma aplicação web desenvolvida com Spring Boot e banco de dados MariaDB, com o objetivo de gerenciar usuários e tarefas. Ele permite realizar todas as operações básicas de um sistema CRUD (Criar, Consultar, Atualizar e Deletar).
+# ✅ Gerenciador de Tarefas com Spring Boot & MariaDB
 
-🗂️ Sumário
-Requisitos para rodar
+Este projeto é uma API RESTful feita com **Spring Boot** e **MariaDB** para controle de usuários e tarefas. A aplicação permite cadastrar, listar, atualizar e excluir registros, seguindo o padrão CRUD.
 
-Configurando o Banco de Dados
+Ideal para quem está aprendendo back-end com Java e quer ver na prática como funciona a integração com banco de dados relacional.
 
-Instalação do XAMPP
+---
 
-Criação do banco taskmanager
+## 📚 Conteúdo
 
-Configuração de acesso
+- [O que você vai precisar](#o-que-você-vai-precisar)
+- [Configurando o Banco de Dados](#configurando-o-banco-de-dados)
+- [Ajustando o Projeto](#ajustando-o-projeto)
+- [Executando a Aplicação](#executando-a-aplicação)
+- [Como testar a API](#como-testar-a-api)
+- [Verificando os dados no banco](#verificando-os-dados-no-banco)
+- [Considerações finais](#considerações-finais)
 
-Configurações do Projeto
+---
 
-Arquivo application.properties
+## 🧰 O que você vai precisar
 
-Dependências utilizadas
+Antes de rodar a aplicação, é importante ter algumas ferramentas já instaladas:
 
-Como executar o sistema
+- **Java 11 ou superior**
+- **XAMPP** (para rodar o MariaDB)
+- **IDE Java** de sua preferência (ex: IntelliJ, Eclipse ou VSCode)
+- **Postman** ou Insomnia (para testar os endpoints da API)
 
-Iniciando os serviços
+---
 
-Rodando a aplicação
+## 🛠️ Configurando o Banco de Dados
 
-Testando os endpoints
+### 1. Instalando e ativando o MariaDB
 
-Validação dos dados
+- Acesse o site oficial do [XAMPP](https://www.apachefriends.org/) e faça o download.
+- Instale normalmente e abra o painel de controle.
+- Inicie o serviço do **MariaDB** clicando em “Start”.
 
-Considerações finais
+### 2. Criando o banco de dados
 
-1. Requisitos para rodar
-Para conseguir compilar e executar o projeto, é necessário ter o seguinte ambiente configurado:
+Abra o **phpMyAdmin** acessando `http://localhost/phpmyadmin` e:
 
-Java 11 ou superior instalado (JDK)
+- Clique em **Databases**
+- Crie um novo banco com o nome: `taskmanager`
 
-XAMPP com MariaDB ativo
+Ou, se preferir linha de comando:
 
-Alguma IDE Java (IntelliJ, Eclipse, VSCode, etc.)
-
-Postman (opcional, mas útil para testar a API)
-
-2. Configurando o Banco de Dados
-Instalação do XAMPP
-Acesse o site https://www.apachefriends.org e baixe o instalador.
-
-Instale e abra o painel do XAMPP.
-
-Inicie o serviço MariaDB clicando em "Start".
-
-Criação do banco taskmanager
-Abra o phpMyAdmin acessando http://localhost/phpmyadmin/ e siga os passos:
-
-Vá até a aba "Databases"
-
-Crie um banco com o nome taskmanager
-
-Ou, se preferir usar o console do MariaDB:
-
-sql
-Copiar
-Editar
+```sql
 CREATE DATABASE taskmanager;
-Configuração de acesso
-A porta padrão do MariaDB geralmente é 3306, mas pode ser necessário usar 3307 dependendo da instalação. O acesso ao banco é configurado no arquivo application.properties.
-
-3. Configurações do Projeto
-Arquivo application.properties
-Configure este arquivo em src/main/resources/ com as credenciais corretas do seu ambiente:
-
-properties
-Copiar
-Editar
-spring.application.name=persistenciadadosav1
-spring.datasource.url=jdbc:mariadb://localhost:3306/taskmanager
-spring.datasource.username=root
-spring.datasource.password= # coloque a senha do seu banco ou deixe em branco se não houver
-spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
-
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MariaDBDialect
-Dependências utilizadas
-O projeto usa bibliotecas e frameworks como:
-
-Spring Boot Starter Web
-
-Spring Data JPA
-
-MariaDB Driver
-
-4. Como executar o sistema
-Iniciando os serviços
-Abra o XAMPP e inicie o MariaDB
-
-Verifique se o banco taskmanager está criado e acessível
-
-Rodando a aplicação
-Importe o projeto na sua IDE
-
-Execute a classe principal com a anotação @SpringBootApplication
-
-O sistema será iniciado na porta 8080
-
-Acesse em: http://localhost:8080
-
-Testando os endpoints
-Com o Postman (ou outro cliente HTTP), envie requisições para testar os recursos da API. Exemplos:
-
-POST /usuarios → cria um novo usuário
-
-GET /usuarios → retorna a lista de usuários
-
-PUT /usuarios/{id} → atualiza um usuário
-
-DELETE /usuarios/{id} → remove um usuário
-
-5. Validação dos dados
-Você pode validar se os dados estão sendo salvos corretamente consultando diretamente no banco via phpMyAdmin ou terminal com os seguintes comandos:
-
-sql
-Copiar
-Editar
-SHOW TABLES;
-SELECT * FROM usuarios;
-SELECT * FROM tarefas;
-6. Considerações finais
-Esse projeto é uma ótima base para qualquer aplicação que precise de um backend estruturado com Java. Ele cobre desde a configuração inicial até testes com ferramentas reais, e pode ser expandido facilmente para incluir autenticação, relacionamentos mais complexos e deploy em produção.
