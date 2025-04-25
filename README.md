@@ -45,13 +45,11 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas:
 
    ```sql
    CREATE DATABASE taskmanager;
+
 Configuração da Aplicação
 application.properties
 O arquivo de configuração do Spring Boot é o application.properties. Faça as seguintes modificações para conectar à sua instância do MariaDB:
 
-properties
-Copiar
-Editar
 spring.application.name=persistenciadadosav1
 spring.datasource.url=jdbc:mariadb://localhost:3306/taskmanager
 spring.datasource.username=root
@@ -61,6 +59,7 @@ spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MariaDBDialect
+
 Executando o Projeto
 Iniciar MariaDB
 Abra o painel do XAMPP e clique em "Start" para iniciar o MariaDB.
@@ -89,40 +88,37 @@ Utilize o Postman para fazer requisições para os endpoints da API, por exemplo
 
 Criar Usuário:
 
-Método: POST URL: http://localhost:8080/usuarios Corpo: JSON com os dados do usuário.
+Método: POST
+URL: http://localhost:8080/usuarios
+Corpo: JSON com os dados do usuário.
 
 Listar Usuários:
 
-Método: GET URL: http://localhost:8080/usuarios
+Método: GET
+URL: http://localhost:8080/usuarios
 
 Atualizar Usuário:
 
-Método: PUT URL: http://localhost:8080/usuarios/{id} Corpo: JSON com os dados atualizados.
+Método: PUT
+URL: http://localhost:8080/usuarios/{id}
+Corpo: JSON com os dados atualizados.
 
 Deletar Usuário:
 
-Método: DELETE URL: http://localhost:8080/usuarios/{id}
+Método: DELETE
+URL: http://localhost:8080/usuarios/{id}
 
 Verificação no Banco de Dados
 Você pode usar o phpMyAdmin ou comandos SQL para verificar se as alterações realizadas na aplicação foram aplicadas corretamente ao banco de dados:
 
 Listar tabelas:
-
-sql
-Copiar
-Editar
 SHOW TABLES;
+
 Verificar dados na tabela de usuários:
-
-sql
-Copiar
-Editar
 SELECT * FROM usuarios;
-Verificar dados na tabela de tarefas:
 
-sql
-Copiar
-Editar
+Verificar dados na tabela de tarefas:
 SELECT * FROM tarefas;
+
 Conclusão
 Este projeto demonstra como integrar Spring Boot com MariaDB para gerenciar um sistema de tarefas com operações CRUD. Através da configuração adequada do banco de dados e da aplicação, é possível realizar as operações de criação, leitura, atualização e exclusão de usuários e tarefas. A validação dos dados pode ser feita via Postman e verificação direta no banco de dados utilizando SQL.
